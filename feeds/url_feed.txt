@@ -1,0 +1,2 @@
+http://malicious.com/malware.exe
+https://phishingsite.net/login
