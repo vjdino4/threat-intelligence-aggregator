@@ -59,5 +59,5 @@ The tool generates:
 - Cybersecurity automation
 
 👤 Author
-Vijaya 
+Vijaya | 
 Cybersecurity Enthusiast
