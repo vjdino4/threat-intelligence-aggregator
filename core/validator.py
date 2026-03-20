@@ -12,3 +12,11 @@ def validate_domain(domain):
 
 def validate_url(url):
     return url.startswith("http")
+
+
+
+def validate_hash(h):
+    return len(h) in [32, 64]
+
+def validate_email(e):
+    return "@" in e

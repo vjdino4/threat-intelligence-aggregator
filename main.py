@@ -1,4 +1,4 @@
-from utils.file_loader import load_file
+from utils.file_loader import load_file, load_url
 from parsers.feed_parser import extract_ips, extract_domains, extract_urls
 from core.validator import validate_ip, validate_domain, validate_url
 from core.normalizer import normalize
@@ -48,3 +48,27 @@ report = generate_report(correlated_data)
 save_report(report)
 
 print("\nProject Completed Successfully!")
+
+
+from parsers.feed_parser import extract_hashes, extract_emails   
+
+hashes = extract_hashes(ip_data + domain_data + url_data)
+emails = extract_emails(ip_data + domain_data + url_data)
+
+
+live_feed = load_url("https://feodotracker.abuse.ch/downloads/ipblocklist.txt")
+
+ips += extract_ips(live_feed)
+
+for h in hashes:
+    if validate_hash(h):
+        ioc_database.append(normalize(h, "hash", "feed"))
+
+for e in emails:
+    if validate_email(e):
+        ioc_database.append(normalize(e, "email", "feed"))
+
+
+print("[INFO] Loading feeds...")
+print("[INFO] Parsing IOCs...")
+print("[INFO] Generating report...")

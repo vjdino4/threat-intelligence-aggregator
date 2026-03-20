@@ -2,5 +2,52 @@
     "total_iocs": 10,
     "high_risk": 0,
     "medium_risk": 0,
-    "low_risk": 10
+    "low_risk": 10,
+    "top_threats": [
+        {
+            "indicator": "162.243.103.246",
+            "type": "ip",
+            "sources": [
+                "ip_feed"
+            ],
+            "count": 1,
+            "severity": "LOW"
+        },
+        {
+            "indicator": "178.62.3.223",
+            "type": "ip",
+            "sources": [
+                "ip_feed"
+            ],
+            "count": 1,
+            "severity": "LOW"
+        },
+        {
+            "indicator": "27.133.154.218",
+            "type": "ip",
+            "sources": [
+                "ip_feed"
+            ],
+            "count": 1,
+            "severity": "LOW"
+        },
+        {
+            "indicator": "34.204.119.63",
+            "type": "ip",
+            "sources": [
+                "ip_feed"
+            ],
+            "count": 1,
+            "severity": "LOW"
+        },
+        {
+            "indicator": "50.16.16.211",
+            "type": "ip",
+            "sources": [
+                "ip_feed"
+            ],
+            "count": 1,
+            "severity": "LOW"
+        }
+    ]
 }
