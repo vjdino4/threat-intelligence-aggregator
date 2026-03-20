@@ -35,3 +35,29 @@ utils/        -> Helper functions
 outputs/      -> Generated blocklists & reports  
 screenshots/  -> Project report PDF 
 
+📄 Project Report
+    Full project documentation and outputs are available here:
+👉 screenshots/Threat_Intelligence_Aggregator_Report.pdf
+
+📊 Output
+The tool generates:
+- Normalized IOC dataset
+- Correlated high-risk indicators
+- Blocklists (IP, Domain, URL)
+- Threat intelligence report
+
+🔐 Practical Applications
+- SOC threat monitoring
+- Firewall / IDS blocklist generation
+- Malware infrastructure detection
+- Threat intelligence automation
+
+📈 Learning Outcomes
+- IOC parsing and validation
+- Threat intelligence workflows
+- Data normalization & correlation
+- Cybersecurity automation
+
+👤 Author
+Vijaya 
+Cybersecurity Enthusiast
