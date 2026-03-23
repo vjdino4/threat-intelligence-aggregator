@@ -1,74 +1,100 @@
+# Imports
 from utils.file_loader import load_file, load_url
-from parsers.feed_parser import extract_ips, extract_domains, extract_urls
-from core.validator import validate_ip, validate_domain, validate_url
+from parsers.feed_parser import extract_ips, extract_domains, extract_urls, extract_hashes, extract_emails
+from core.validator import validate_ip, validate_domain, validate_url, validate_hash, validate_email
 from core.normalizer import normalize
 from core.correlation_engine import correlate_iocs
 from core.blocklist_generator import generate_blocklists, save_blocklist
 from core.report_generator import generate_report, save_report
 
-# Step 1: Load feeds
+
+# -------------------------------
+# STEP 1: Load Feeds
+# -------------------------------
+print("[INFO] Loading feeds...")
+
 ip_data = load_file("feeds/ip_feed.txt")
 domain_data = load_file("feeds/domain_feed.txt")
 url_data = load_file("feeds/url_feed.txt")
 
-# Step 2: Parse
-ips = extract_ips(ip_data)
+# Live threat feed
+live_feed = load_url("https://feodotracker.abuse.ch/downloads/ipblocklist.txt")
+
+
+# -------------------------------
+# STEP 2: Parse Indicators
+# -------------------------------
+print("[INFO] Parsing IOCs...")
+
+ips = extract_ips(ip_data) + extract_ips(live_feed)
 domains = extract_domains(domain_data)
 urls = extract_urls(url_data)
 
-# Step 3: Validate
+hashes = extract_hashes(ip_data + domain_data + url_data)
+emails = extract_emails(ip_data + domain_data + url_data)
+
+
+# -------------------------------
+# STEP 3: Validate
+# -------------------------------
 valid_ips = [ip for ip in ips if validate_ip(ip)]
 valid_domains = [d for d in domains if validate_domain(d)]
 valid_urls = [u for u in urls if validate_url(u)]
+valid_hashes = [h for h in hashes if validate_hash(h)]
+valid_emails = [e for e in emails if validate_email(e)]
 
-# Step 4: Normalize
+
+# -------------------------------
+# STEP 4: Normalize
+# -------------------------------
 ioc_database = []
 
 for ip in valid_ips:
-    ioc_database.append(normalize(ip, "ip", "ip_feed"))
+    ioc_database.append(normalize(ip, "ip", "feed"))
 
 for d in valid_domains:
-    ioc_database.append(normalize(d, "domain", "domain_feed"))
+    ioc_database.append(normalize(d, "domain", "feed"))
 
 for u in valid_urls:
-    ioc_database.append(normalize(u, "url", "url_feed"))
+    ioc_database.append(normalize(u, "url", "feed"))
 
-# Step 5: Correlate
+for h in valid_hashes:
+    ioc_database.append(normalize(h, "hash", "feed"))
+
+for e in valid_emails:
+    ioc_database.append(normalize(e, "email", "feed"))
+
+
+# -------------------------------
+# STEP 5: Correlation Engine
+# -------------------------------
+print("[INFO] Running correlation engine...")
+
 correlated_data = correlate_iocs(ioc_database)
 
-# Step 6: Blocklists
+
+# -------------------------------
+# STEP 6: Generate Blocklists
+# -------------------------------
+print("[INFO] Generating blocklists...")
+
 ip_blocklist, domain_blocklist, url_blocklist = generate_blocklists(correlated_data)
 
 save_blocklist("outputs/blocklist_ips.txt", ip_blocklist)
 save_blocklist("outputs/blocklist_domains.txt", domain_blocklist)
 save_blocklist("outputs/blocklist_urls.txt", url_blocklist)
 
-# Step 7: Report
+
+# -------------------------------
+# STEP 7: Reporting
+# -------------------------------
+print("[INFO] Generating report...")
+
 report = generate_report(correlated_data)
 save_report(report)
 
-print("\nProject Completed Successfully!")
 
-
-from parsers.feed_parser import extract_hashes, extract_emails   
-
-hashes = extract_hashes(ip_data + domain_data + url_data)
-emails = extract_emails(ip_data + domain_data + url_data)
-
-
-live_feed = load_url("https://feodotracker.abuse.ch/downloads/ipblocklist.txt")
-
-ips += extract_ips(live_feed)
-
-for h in hashes:
-    if validate_hash(h):
-        ioc_database.append(normalize(h, "hash", "feed"))
-
-for e in emails:
-    if validate_email(e):
-        ioc_database.append(normalize(e, "email", "feed"))
-
-
-print("[INFO] Loading feeds...")
-print("[INFO] Parsing IOCs...")
-print("[INFO] Generating report...")
+# -------------------------------
+# FINAL OUTPUT
+# -------------------------------
+print("\n[✔] Project Completed Successfully!")
