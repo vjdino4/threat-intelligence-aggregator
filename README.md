@@ -1,5 +1,5 @@
-## Threat Intelligence Aggregator (Non-AI)
-# Overview
+# Threat Intelligence Aggregator (Non-AI)
+## Overview
 
 A Python-based Threat Intelligence Aggregator that collects, parses, normalizes, and correlates Indicators of Compromise (IOCs) from multiple threat intelligence feeds — without using AI/ML.
 
@@ -7,7 +7,7 @@ The system transforms raw threat data into actionable intelligence, generating b
 
 ---
 
-# Key Features
+## Key Features
 Multi-source threat intelligence aggregation
 IOC parsing (IP, Domain, URL, Hash, Email)
 Data normalization with metadata
@@ -20,11 +20,11 @@ Threat intelligence reporting
 
 ## Tech Stack
 
-# Language:
+##Language:
 
 Python
 
-# Libraries:
+## Libraries:
 
 requests – Fetch threat feeds
 re – Pattern matching (IOC extraction)
@@ -32,14 +32,14 @@ json, csv – Data parsing
 ipaddress – IP validation
 hashlib – Hash validation
 
-# Data Sources:
+## Data Sources:
 
 OSINT feeds (e.g., Abuse.ch)
 Local files (CSV, TXT, JSON)
 
 ---
 
-# How It Works
+## How It Works
 - Load threat feeds (files or URLs)
 - Extract IOCs (IP, domain, URL, hash, email)
 - Normalize data into a standard format
@@ -50,7 +50,7 @@ Local files (CSV, TXT, JSON)
 
 ---
 
-# Core Modules
+## Core Modules
 1. Feed Loader – Imports IOC data
 2. Parser Engine – Extracts indicators
 3. Normalization Engine – Standardizes data
@@ -60,7 +60,7 @@ Local files (CSV, TXT, JSON)
 
 ---
 
-# Project Structure
+## Project Structure
 feeds/        # Input threat feeds  
 parsers/      # IOC extraction logic  
 core/         # Normalization & correlation  
@@ -70,7 +70,7 @@ screenshots/  # Project report
 
 ---
 
-# Output
+## Output
 - Normalized IOC dataset
 - High-risk correlated indicators
 - Blocklists (IP, Domain, URL, Hash)
@@ -78,7 +78,7 @@ screenshots/  # Project report
 
 ---
 
-# Use Cases
+## Use Cases
 - SOC threat monitoring
 - Firewall / IDS rule generation
 - Malware infrastructure detection
@@ -86,7 +86,7 @@ screenshots/  # Project report
 
 ---
 
-# Learning Outcomes
+## Learning Outcomes
 - IOC parsing & validation
 - Threat intelligence workflows
 - Data normalization & correlation
@@ -94,10 +94,10 @@ screenshots/  # Project report
 
 ---
 
-# Documentation
+## Documentation
 Full report available:
 screenshots/Threat_Intelligence_Aggregator_Report.pdf
 
-## 👤 Author
+#👤 Author
 Vijaya  
 SOC Analyst (Aspiring) | Threat Intelligence | SIEM | Incident Response | Python
