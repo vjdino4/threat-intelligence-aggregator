@@ -91,3 +91,13 @@ screenshots/  # Project report
 - Threat intelligence workflows
 - Data normalization & correlation
 - Blue team defensive techniques
+
+---
+
+# Documentation
+Full report available:
+screenshots/Threat_Intelligence_Aggregator_Report.pdf
+
+## 👤 Author
+Vijaya  
+SOC Analyst (Aspiring) | Threat Intelligence | SIEM | Incident Response | Python
