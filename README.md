@@ -96,7 +96,7 @@ screenshots/  # Project report
 
 ## Documentation
 Full report available:
-screenshots/Threat_Intelligence_Aggregator_Report.pdf
+screenshots/Outputs file-GitHub.pdf
 
 # Author
 Vijaya  
