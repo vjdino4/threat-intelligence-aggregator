@@ -98,6 +98,6 @@ screenshots/  # Project report
 Full report available:
 screenshots/Threat_Intelligence_Aggregator_Report.pdf
 
-#👤 Author
+# Author
 Vijaya  
 SOC Analyst (Aspiring) | Threat Intelligence | SIEM | Incident Response | Python
