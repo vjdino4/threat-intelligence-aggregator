@@ -1,4 +1,4 @@
-# Threat Intelligence Aggregator (Non-AI)
+# 🚀Threat Intelligence Aggregator (Non-AI)
 ## Overview
 
 A Python-based Threat Intelligence Aggregator that collects, parses, normalizes, and correlates Indicators of Compromise (IOCs) from multiple threat intelligence feeds — without using AI/ML.
